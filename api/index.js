@@ -2,8 +2,8 @@ import express from "express";
 import cors from "cors";
 import bodyParser from "body-parser";
 
-import { dbConnection } from "./database/database";
-import { UserRouter } from "./routes/Router";
+import { dbConnection } from "./database/database.js";
+import { UserRouter } from "./routes/Router.js";
 
 const app = express();
 app.use(express.json({ limit: "50mb" }));

@@ -9,30 +9,30 @@ const Signup = () => {
   const [password, setPassword] = useState("");
   const [cpassword, setCpassword] = useState("");
 
-  
   const handleSignup = async (e) => {
     e.preventDefault();
-
+  
     if (password === cpassword) {
       try {
-        let response = await fetch(buildUrl("/auth/signup"), {
+        await fetch(buildUrl("/auth/signup"), {
           method: "POST",
-          header: {
-            "Content-type": "application/json",
+          headers: {
+            "Content-Type": "application/json",
           },    
           body: JSON.stringify({
-            username, email, password,
-          })
-        })
-        const data = response.json();
-        console.log(data)
+            username,
+            email,
+            password,
+          }),
+        });
       } catch (error) {
-        console.log(error)
+        console.log(error);
       }
     } else {
-      console.log("pass does not match!");
+      console.log("Passwords do not match!");
     }
-  }
+  };
+  
 
 
   return (
