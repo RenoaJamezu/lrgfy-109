@@ -5,7 +5,7 @@ const Login = () => {
     <>
       <div className="flex items-center justify-center w-full h-screen">
         <div className="w-[35%] border-2 border-primaryColor rounded-lg shadow-md">
-          <div className="p-10">
+          <div className="p-10 rounded-lg">
             <h1 className="text-primaryColor font-black text-3xl">Login</h1>
             <div className="pt-5">
               <form>

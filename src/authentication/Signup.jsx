@@ -1,11 +1,45 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import { buildUrl } from "../utils/buildURL";
 
 const Signup = () => {
+
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [cpassword, setCpassword] = useState("");
+
+  
+  const handleSignup = async (e) => {
+    e.preventDefault();
+
+    if (password === cpassword) {
+      try {
+        let response = await fetch(buildUrl("/auth/signup"), {
+          method: "POST",
+          header: {
+            "Content-type": "application/json",
+          },    
+          body: JSON.stringify({
+            username, email, password,
+          })
+        })
+        const data = response.json();
+        console.log(data)
+      } catch (error) {
+        console.log(error)
+      }
+    } else {
+      console.log("pass does not match!");
+    }
+  }
+
+
   return (
     <>
       <div className="flex items-center justify-center w-full h-screen">
         <div className="w-[35%] border-2 border-primaryColor rounded-lg shadow-md">
-          <div className="p-10">
+          <div className="p-10 rounded-lg">
             <h1 className="text-primaryColor font-black text-3xl">Create an Account</h1>
             <div className="pt-5">
               <form>
@@ -14,8 +48,10 @@ const Signup = () => {
                     Username
                   </label>
                   <input
-                    type="username"
-                    placeholder="Enter your username"
+                    type="text"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    placeholder="Username"
                     className="text-xs font-light border border-primaryColor px-4 h-10 py-2 rounded-lg outline-none text-white"
                   />
                 </div>
@@ -25,18 +61,22 @@ const Signup = () => {
                   </label>
                   <input
                     type="email"
-                    placeholder="Enter your email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="Email"
                     className="text-xs font-light border border-primaryColor px-4 h-10 py-2 rounded-lg outline-none text-white"
                   />
                 </div>
-                <div className="flex items-center gap-2">
+                <div className="md-flex items-center gap-2">
                   <div className="flex flex-col py-2 w-full">
                     <label htmlFor="" className="text-sm font-medium text-primaryColor py-2">
                       Password
                     </label>
                     <input
                       type="password"
-                      placeholder="Enter your password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      placeholder="Password"
                       className="text-xs font-light border border-primaryColor px-4 h-10 py-2 rounded-lg outline-none text-white"
                     />
                   </div>
@@ -46,6 +86,8 @@ const Signup = () => {
                     </label>
                     <input
                       type="password"
+                      value={cpassword}
+                      onChange={(e) => setCpassword(e.target.value)}
                       placeholder="Confirm password"
                       className="text-xs font-light border border-primaryColor px-4 h-10 py-2 rounded-lg outline-none text-white"
                     />
@@ -54,6 +96,7 @@ const Signup = () => {
                 <div className="mt-10 space-y-3">
                   <button
                     type="submit"
+                    onClick={handleSignup}
                     className="bg-primaryColor text-secondaryColor px-2 h-10 rounded w-full text-sm font-bold"
                   >
                     Register

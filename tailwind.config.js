@@ -9,6 +9,7 @@ export default {
       colors: {
         primaryColor: "#C7AD7F",
         secondaryColor: "#121111",
+        tertiaryColor: "#302929",
       },
       fontFamily: {
         Poppins: ["Poppins", "sans-serif"],
