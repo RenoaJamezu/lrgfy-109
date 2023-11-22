@@ -23,7 +23,7 @@ export const Login = () => {
             password,
           })
         });
-
+        console.log(response.status)
         if (response.status === 201) {
           nav("/homepage")
         }
