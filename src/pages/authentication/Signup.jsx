@@ -107,7 +107,7 @@ export const Signup = () => {
                   <p className="text-xs text-primaryColor">
                     Have an account?
                     <Link to="/login">
-                      <u>Login</u>
+                      <u className="hover:text-white transition-colors">Login</u>
                     </Link>
                   </p>
                 </div>
