@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { buildUrl } from "../../utils/buildURL.js";
+import { buildUrl } from "../../utils/buildUrl.js";
 
 export const Login = () => {
 
