@@ -1,10 +1,11 @@
 import { BrowserRouter as Routers, Routes, Route } from "react-router-dom";
 import './App.css'
+import { Mainpage } from "./pages/Mainpage";
+import { Login } from "./pages/authentication/Login";
+import { Signup } from "./pages/authentication/Signup";
+import { Layout } from "./pages/Layout";
 
-import Mainpage from './dashboard/Mainpage';
-import Login from './authentication/Login';
-import Signup from "./authentication/Signup";
-import Layout from "./dashboard/Layout";
+
 
 function App() {
 
@@ -12,8 +13,8 @@ function App() {
     <>
       <Routers>
         <Routes>
-          <Route path="/" element={<Mainpage />} />
-          <Route path='/login' element={<Login />}/>
+          <Route path="/" element={<Mainpage />}/>
+          <Route path="/login" element={<Login />}/>
           <Route path="/signup" element={<Signup />}/>
           <Route path="/homepage" element={<Layout />}/>
         </Routes>

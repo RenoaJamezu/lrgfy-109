@@ -1,6 +1,38 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { buildUrl } from "../../utils/buildURL";
 
-const Login = () => {
+export const Login = () => {
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const nav = useNavigate();
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+
+    if (email !== "" || password !== "") {
+      try {
+        let response = await fetch(buildUrl("/auth/login"), {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            email,
+            password,
+          })
+        });
+
+        if (response.status === 201) {
+          nav("/homepage")
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  };
+
   return (
     <>
       <div className="flex items-center justify-center w-full h-screen">
@@ -15,9 +47,10 @@ const Login = () => {
                   </label>
                   <input
                     type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     placeholder="Enter your email"
-                    className="text-xs font-light border border-primaryColor px-4 h-10 py-2 rounded-lg outline-none text-white"
-                  />
+                    className="text-xs font-light border border-primaryColor px-4 h-10 py-2 rounded-lg outline-none text-white" />
                 </div>
                 <div className="flex flex-col py-2">
                   <label htmlFor="" className="text-sm font-medium text-primaryColor py-2">
@@ -25,17 +58,17 @@ const Login = () => {
                   </label>
                   <input
                     type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                     placeholder="Enter your password"
-                    className="text-xs font-light border border-primaryColor px-4 h-10 py-2 rounded-lg outline-none text-white"
-                  />
+                    className="text-xs font-light border border-primaryColor px-4 h-10 py-2 rounded-lg outline-none text-white" />
                 </div>
                 <div className="flex items center justify-between mt-5">
                   <div className="flex items-center gap-2">
                     <input
                       type="checkbox"
                       placeholder="password"
-                      className="text-sm font-light border border-primaryColor px-4 py-2 rounded outline-none"
-                    />
+                      className="text-sm font-light border border-primaryColor px-4 py-2 rounded outline-none" />
                     <label htmlFor="" className="text-xs text-primaryColor">
                       Remember me
                     </label>
@@ -48,15 +81,16 @@ const Login = () => {
                 </div>
                 <div className="mt-10 space-y-3">
                   <button
-                  type="submit"
-                  className="bg-primaryColor text-secondaryColor px-2 h-10 rounded w-full text-sm font-bold"
+                    type="submit"
+                    onClick={handleLogin}
+                    className="bg-primaryColor text-secondaryColor px-2 h-10 rounded w-full text-sm font-bold"
                   >
                     Login
                   </button>
                   <div>
                     <Link to="/signup">
                       <button
-                      className="border-2 border-primaryColor text-primaryColor px-2 h-10 rounded w-full text-sm font-bold"
+                        className="border-2 border-primaryColor text-primaryColor px-2 h-10 rounded w-full text-sm font-bold"
                       >
                         Signup
                       </button>
@@ -70,6 +104,4 @@ const Login = () => {
       </div>
     </>
   );
-}
-
-export default Login;
+};

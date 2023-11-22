@@ -1,4 +1,4 @@
-const Sidebar = () => {
+export const Sidebar = () => {
   return (
     <>
       <div className="h-full">
@@ -9,5 +9,3 @@ const Sidebar = () => {
     </>
   );
 }
-
-export default Sidebar;

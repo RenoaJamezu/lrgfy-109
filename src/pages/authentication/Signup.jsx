@@ -1,38 +1,41 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import { buildUrl } from "../utils/buildURL";
+import { Link, useNavigate } from "react-router-dom";
+import { buildUrl } from "../../utils/buildURL";
 
-const Signup = () => {
+export const Signup = () => {
 
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [cpassword, setCpassword] = useState("");
+  const nav = useNavigate();
+
 
   const handleSignup = async (e) => {
     e.preventDefault();
-  
+
     if (password === cpassword) {
       try {
-        await fetch(buildUrl("/auth/signup"), {
+        let response = await fetch(buildUrl("/auth/signup"), {
           method: "POST",
           headers: {
-            "Content-Type": "application/json",
+            "Content-type": "application/json",
           },    
           body: JSON.stringify({
-            username,
-            email,
-            password,
-          }),
-        });
+            username, email, password,
+          })
+        })
+        
+        if (response.status === 201) {
+          nav("/login")
+        }
       } catch (error) {
-        console.log(error);
+        console.log(error)
       }
     } else {
-      console.log("Passwords do not match!");
+      console.log("Password does not match!");
     }
-  };
-  
+  }
 
 
   return (
@@ -116,5 +119,3 @@ const Signup = () => {
     </>
   );
 }
-
-export default Signup;

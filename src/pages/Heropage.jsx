@@ -1,4 +1,4 @@
-const Heropage = () => {
+export const Heropage = () => {
   return (
     <>
       <div className="lg:max-w-7xl mx-36 2xl:mx-auto">
@@ -6,7 +6,7 @@ const Heropage = () => {
           <div className="flex items-center">
             <div>
               <img
-              src="/images/LRGfy-LOGO.png"
+              src="/static/images/LRGfy-LOGO.png"
               alt="LOGO"
               className="w-[663px]"/>
             </div>
@@ -16,5 +16,3 @@ const Heropage = () => {
     </>
   );
 }
-
-export default Heropage;
