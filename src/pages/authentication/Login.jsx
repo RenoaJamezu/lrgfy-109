@@ -83,14 +83,14 @@ export const Login = () => {
                   <button
                     type="submit"
                     onClick={handleLogin}
-                    className="bg-primaryColor text-secondaryColor px-2 h-10 rounded w-full text-sm font-bold"
+                    className="bg-primaryColor text-secondaryColor px-2 h-10 rounded w-full text-sm font-bold hover:text-white transition-colors"
                   >
                     Login
                   </button>
                   <div>
                     <Link to="/signup">
                       <button
-                        className="border-2 border-primaryColor text-primaryColor px-2 h-10 rounded w-full text-sm font-bold"
+                        className="border-2 border-primaryColor text-primaryColor px-2 h-10 rounded w-full text-sm font-bold hover:text-white transition-colors"
                       >
                         Signup
                       </button>

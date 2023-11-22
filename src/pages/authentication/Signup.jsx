@@ -70,7 +70,7 @@ export const Signup = () => {
                     className="text-xs font-light border border-primaryColor px-4 h-10 py-2 rounded-lg outline-none text-white"
                   />
                 </div>
-                <div className="md-flex items-center gap-2">
+                <div className="flex items-center gap-3">
                   <div className="flex flex-col py-2 w-full">
                     <label htmlFor="" className="text-sm font-medium text-primaryColor py-2">
                       Password
@@ -100,7 +100,7 @@ export const Signup = () => {
                   <button
                     type="submit"
                     onClick={handleSignup}
-                    className="bg-primaryColor text-secondaryColor px-2 h-10 rounded w-full text-sm font-bold"
+                    className="bg-primaryColor text-secondaryColor px-2 h-10 rounded w-full text-sm font-bold hover:text-white transition-colors"
                   >
                     Register
                   </button>
