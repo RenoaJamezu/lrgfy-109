@@ -22,7 +22,7 @@ export const login = async (req, res) => {
     const isValidPassword = await bcrypt.compare(password, hashed_password);
 
     if (!isValidPassword) {
-      return res.status(400).json({ message: "Wrong password" });
+      return res.status(401).json({ message: "Wrong password" });
     }
 
     // Return a success response
