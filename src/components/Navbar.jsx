@@ -7,8 +7,14 @@ export const Navbar = () => {
       <div className="w-full">
         <div className="border-primaryColor border-b-2 py-4">
           <div className="flex items-center justify-between lg:max-w-7xl mx-36 2xl:mx-auto">
-            <div className="w-[20px] text-primaryColor font-bold text-[30px]">
-              LRGfy
+            <div className="flex gap-2">
+              <img
+                src="/static/icons/LRGfy-LOGO.png"
+                alt="LOGO"
+                className="w-[50px]"/>
+              <div className="w-[20px] text-primaryColor font-bold text-[30px]">
+                LRGfy
+              </div>
             </div>
             <Link to="/login">
               <div className="flex items-center gap-10">

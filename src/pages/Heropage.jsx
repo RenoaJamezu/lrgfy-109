@@ -6,7 +6,7 @@ export const Heropage = () => {
           <div className="flex items-center">
             <div>
               <img
-              src="/static/images/LRGfy-LOGO.png"
+              src="/static/images/LRGfy-TEXT.png"
               alt="LOGO"
               className="w-[663px]"/>
             </div>
