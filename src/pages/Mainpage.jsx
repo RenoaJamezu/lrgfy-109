@@ -4,7 +4,7 @@ import { Heropage } from "./Heropage";
 export const Mainpage = () => {
   return (
     <>
-      <div>
+      <div className="bg-secondaryColor">
         <Navbar />
         <Heropage />
       </div>

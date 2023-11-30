@@ -35,7 +35,7 @@ export const Login = () => {
 
   return (
     <>
-      <div className="flex items-center justify-center w-full h-screen">
+      <div className="flex items-center justify-center w-full h-screen bg-secondaryColor">
         <div className="w-[35%] border-2 border-primaryColor rounded-lg shadow-md">
           <div className="p-10 rounded-lg">
             <h1 className="text-primaryColor font-black text-3xl">Login</h1>
@@ -50,7 +50,7 @@ export const Login = () => {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Enter your email"
-                    className="text-xs font-light border border-primaryColor px-4 h-10 py-2 rounded-lg outline-none text-white" />
+                    className="text-xs font-light border border-primaryColor px-4 h-10 py-2 rounded-lg outline-none text-white bg-secondaryColor" />
                 </div>
                 <div className="flex flex-col py-2">
                   <label htmlFor="" className="text-sm font-medium text-primaryColor py-2">
@@ -61,7 +61,7 @@ export const Login = () => {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="Enter your password"
-                    className="text-xs font-light border border-primaryColor px-4 h-10 py-2 rounded-lg outline-none text-white" />
+                    className="text-xs font-light border border-primaryColor px-4 h-10 py-2 rounded-lg outline-none text-white bg-secondaryColor" />
                 </div>
                 <div className="flex items center justify-between mt-5">
                   <div className="flex items-center gap-2">

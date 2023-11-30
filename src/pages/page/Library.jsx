@@ -6,7 +6,7 @@ export const Library = () => {
 
   return (
     <>
-      <div className="px-10">
+      <div className="px-10 bg-secondaryColor h-screen">
         <div className="flex items-center justify-between lg:max-w-7xl">
           <div>
             <p className="text-primaryColor font-semibold text-[32px] lg:text-[64px] p-0">My Library</p>

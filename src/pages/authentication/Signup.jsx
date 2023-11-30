@@ -40,7 +40,7 @@ export const Signup = () => {
 
   return (
     <>
-      <div className="flex items-center justify-center w-full h-screen">
+      <div className="flex items-center justify-center w-full h-screen bg-secondaryColor">
         <div className="w-[35%] border-2 border-primaryColor rounded-lg shadow-md">
           <div className="p-10 rounded-lg">
             <h1 className="text-primaryColor font-black text-3xl">Create an Account</h1>
@@ -55,7 +55,7 @@ export const Signup = () => {
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
                     placeholder="Username"
-                    className="text-xs font-light border border-primaryColor px-4 h-10 py-2 rounded-lg outline-none text-white"
+                    className="text-xs font-light border border-primaryColor px-4 h-10 py-2 rounded-lg outline-none text-white bg-secondaryColor"
                   />
                 </div>
                 <div className="flex flex-col py-2">
@@ -67,7 +67,7 @@ export const Signup = () => {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Email"
-                    className="text-xs font-light border border-primaryColor px-4 h-10 py-2 rounded-lg outline-none text-white"
+                    className="text-xs font-light border border-primaryColor px-4 h-10 py-2 rounded-lg outline-none text-white bg-secondaryColor"
                   />
                 </div>
                 <div className="flex items-center gap-3">
@@ -80,7 +80,7 @@ export const Signup = () => {
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                       placeholder="Password"
-                      className="text-xs font-light border border-primaryColor px-4 h-10 py-2 rounded-lg outline-none text-white"
+                      className="text-xs font-light border border-primaryColor px-4 h-10 py-2 rounded-lg outline-none text-white bg-secondaryColor"
                     />
                   </div>
                   <div className="flex flex-col py-2 w-full">
@@ -92,7 +92,7 @@ export const Signup = () => {
                       value={cpassword}
                       onChange={(e) => setCpassword(e.target.value)}
                       placeholder="Confirm password"
-                      className="text-xs font-light border border-primaryColor px-4 h-10 py-2 rounded-lg outline-none text-white"
+                      className="text-xs font-light border border-primaryColor px-4 h-10 py-2 rounded-lg outline-none text-white bg-secondaryColor"
                     />
                   </div>
                 </div>
