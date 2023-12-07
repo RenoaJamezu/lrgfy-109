@@ -5,7 +5,7 @@ export const Navbar = () => {
   return (
     <>
       <div className="w-full">
-        <div className="border-primaryColor border-b-2 py-4">
+        <div className="border-primaryColor border-b-2 pt-4 pb-2">
           <div className="flex items-center justify-between lg:max-w-7xl mx-36 2xl:mx-auto">
             <div className="flex gap-2">
               <img
