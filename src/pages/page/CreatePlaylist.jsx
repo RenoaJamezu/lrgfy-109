@@ -10,7 +10,7 @@ export const CreatePlaylist = () => {
         <div>
           <p className="text-primaryColor font-semibold text-[32px] lg:text-[64px] p-00">Create Playlist</p>
         </div>
-        <div className="items-center">
+        <div className="p-10 text-center">
           <div className="pt-9">
             <div>
               <input
@@ -28,10 +28,10 @@ export const CreatePlaylist = () => {
             </div>
           </div>
           <div className="pt-5">
-            <input
+            <textarea
               type="text"
               placeholder="Playlist Description"
-              className="text-xs font-light border-2 border-primaryColor px-4 h-40 py-2 rounded outline-none text-white w-2/4 bg-secondaryColor"
+              className="text-xs font-light border-2 border-primaryColor p-4 h-40 rounded outline-none text-white w-2/4 bg-secondaryColor"
             />
           </div>
         </div>
