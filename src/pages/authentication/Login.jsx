@@ -53,11 +53,6 @@ export const Login = () => {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Enter your email"
-                    onKeyPress={(e) => {
-                      if (e.key === 'Enter') {
-                        handleLogin;
-                      }
-                    }}
                     className="text-xs font-light border border-primaryColor px-4 h-10 py-2 rounded-lg outline-none text-white bg-secondaryColor" />
                 </div>
                 <div className="flex flex-col py-2">
