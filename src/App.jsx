@@ -4,6 +4,7 @@ import { Mainpage } from "./pages/Mainpage";
 import { Login } from "./pages/authentication/Login";
 import { Signup } from "./pages/authentication/Signup";
 import { Layout } from "./pages/Layout";
+import { Playlist } from "./components/modal/Playlist";
 
 
 
@@ -17,6 +18,7 @@ function App() {
           <Route path="/login" element={<Login />}/>
           <Route path="/signup" element={<Signup />}/>
           <Route path="/homepage" element={<Layout />}/>
+          <Route path="/playlist" element={<Playlist />}/>
         </Routes>
       </Routers>
     </>

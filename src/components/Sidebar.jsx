@@ -1,24 +1,22 @@
-import { useNavigate } from "react-router-dom";
-import { Library } from "/src/pages/page/Library";
-import { CreatePlaylist } from "../pages/page/CreatePlaylist";
 import { useState } from "react";
+import { Library } from "/src/pages/page/Library";
+import { AllSongs } from "../pages/page/AllSongs";
 
 export const Sidebar = () => {
   
-  const nav = useNavigate();
-
   const [isLibraryOpen, setLibraryOpen] = useState (true)
-  const [isCreatePlaylistOpen, setCreatePlaylistOpen] = useState (false)
+  const [isAllSongsOpen, setAllSongsOpen] = useState (false)
 
 
   const handleLibrary = async () => {
     setLibraryOpen(true);
-    setCreatePlaylistOpen(false);
+    setAllSongsOpen(false);
   }
 
-  const handleCreatePlaylist = async () => {
+
+  const handleAllSongs = async () => {
     setLibraryOpen(false);
-    setCreatePlaylistOpen(true);
+    setAllSongsOpen(true);
   }
 
   const handleLogout = async () => {
@@ -37,18 +35,26 @@ export const Sidebar = () => {
               <button
                 type="submit"
                 onClick={handleLibrary}
-                className="bg-primaryColor text-secondaryColor px-2 h-10 rounded-full w-full text-sm font-bold hover:text-white transition-colors"
+                className={`${
+                  isLibraryOpen
+                    ? "bg-primaryColor text-white"
+                    : "bg-primaryColor text-secondaryColor"
+                } px-2 h-10 rounded-full w-full text-sm font-bold hover:text-white transition-colors`}
               >
-                Library
+                My Library
               </button>
             </div>
             <div className="bg-transparent pb-5">
               <button
                 type="submit"
-                onClick={handleCreatePlaylist}
-                className="bg-primaryColor text-secondaryColor px-2 h-10 rounded-full w-full text-sm font-bold hover:text-white transition-colors"
+                onClick={handleAllSongs}
+                className={`${
+                  isAllSongsOpen
+                    ? "bg-primaryColor text-white"
+                    : "bg-primaryColor text-secondaryColor"
+                } px-2 h-10 rounded-full w-full text-sm font-bold hover:text-white transition-colors`}
               >
-                Create Playlist
+                All Songs
               </button>
             </div>
           </div>
@@ -63,7 +69,7 @@ export const Sidebar = () => {
       </div>
       <div className="ml-[300px]">
         {isLibraryOpen ? <Library /> : ""}
-        {isCreatePlaylistOpen ? <CreatePlaylist /> : ""}
+        {isAllSongsOpen ? <AllSongs /> : ""}
       </div>
     </>
   );
