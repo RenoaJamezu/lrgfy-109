@@ -26,7 +26,7 @@ export const Login = () => {
         console.log(response.status)
         if (response.status === 201) {
           console.log("Correct password")
-          nav("/homepage")
+          nav("/library")
         } else if (response.status === 401){
           console.log("Incorrect Password")
         }

@@ -1,16 +1,13 @@
 export const Heropage = () => {
   return (
     <>
-      <div className="lg:max-w-7xl mx-36 2xl:mx-auto">
-        <div className="flex justify-center items-center">
-          <div className="flex items-center">
-            <div>
-              <img
-              src="/static/images/LRGfy-TEXT.png"
-              alt="LOGO"
-              className="w-[663px]"/>
-            </div>
-          </div>
+      <div className="h-screen w-screen flex justify-center items-center">
+        <div className="bg-secondaryColor">
+          <img 
+          src="/static/images/LRGfy-TEXT.png" 
+          alt="LOGO"
+          className="h-[600px]"
+          />
         </div>
       </div>
     </>
