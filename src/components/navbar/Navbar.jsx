@@ -4,7 +4,7 @@ import { HiUser } from "react-icons/hi";
 export const Navbar = () => {
   return (
     <>
-      <div className="fixed w-full">
+      <div className="fixed w-full border-b-2 border-primaryColor">
         <div className="bg-secondaryColor flex justify-between items-center py-3 px-20">
           <div className="flex items-center gap-3">
             <img
