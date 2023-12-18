@@ -30,8 +30,10 @@ export const CreatePlaylist = () => {
                     <div className="flex items-center gap-5">
                       <h1 className="text-primaryColor font-bold">Add Playlist Image</h1>
                       <label htmlFor="fileInput" className="cursor-pointer">
-                        <div className="border-2 border-primaryColor bg-primaryColor h-12 py-3 px-10 font-medium text-xl rounded-lg flex items-center hover:text-white">
-                        <MdAddAPhoto size={22} className="text-secondaryColor" />
+                        <div className="border-2 border-primaryColor bg-primaryColor h-12 py-3 px-10 font-medium text-xl rounded-lg flex items-center text-black hover:text-white">
+                        <MdAddAPhoto 
+                          size={22} 
+                        />
                           <input
                             type="file"
                             accept="image/*"
