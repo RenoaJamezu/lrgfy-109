@@ -16,8 +16,8 @@ export const AddSong = () => {
         <Header
           title={"Add Song"}
         />
-        <div className="ml-[300px] h-screen bg-secondaryColor">
-          <div className="bg-secondaryColor gap-5 px-10 pt-28">
+        <div className="ml-[300px] h-screen">
+          <div className="bg-secondaryColor gap-5 px-10 pt-28 h-full">
             <form>
               <div className="flex flex-col">
                 <div>

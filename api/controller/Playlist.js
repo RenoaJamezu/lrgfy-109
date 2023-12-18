@@ -69,13 +69,13 @@ export const UserPlaylist = async (req, res) => {
 
 // Delete playlist
 export const DeletePlaylist = async (req, res) => {
-  const user_id = req.params;
+  const { playlist_id } = req.params;
 
   try {
-    // Check if the playlist with the provided playlist_id exists for the user
+    // Check if the playlist with the provided playlist_id exists
     const playlistExists = await dbConnection.query(
-      "SELECT * FROM playlist WHERE user_id = $1 AND playlist_id = $2",
-      [user_id.id, playlist_id]
+      "SELECT * FROM playlist WHERE playlist_id = $1",
+      [playlist_id]
     );
 
     if (playlistExists.rows.length === 0) {
@@ -91,4 +91,4 @@ export const DeletePlaylist = async (req, res) => {
     console.log(error);
     return res.status(500).json({ message: "Internal server error" });
   }
-}
+};

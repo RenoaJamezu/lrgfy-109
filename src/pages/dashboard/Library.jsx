@@ -12,8 +12,8 @@ export const Library = () => {
           title={"Library"}
         />
         <CreatePlaylistButton />
-        <div className="ml-[300px] h-screen bg-secondaryColor">
-          <div className="flex flex-col bg-secondaryColor gap-5 px-10 pt-36">
+        <div className="ml-[300px] h-screen">
+          <div className="flex flex-col bg-secondaryColor gap-5 px-10 pt-36 h-full">
             <PlaylistCard/>
           </div>
         </div>
