@@ -22,7 +22,6 @@ CREATE TABLE songs (
 CREATE TABLE playlist (
   playlist_id SERIAL PRIMARY KEY,
   playlist_name VARCHAR(255),
-  description VARCHAR(255),
   user_id INT REFERENCES users(user_id),
   header_url VARCHAR(255)
 );

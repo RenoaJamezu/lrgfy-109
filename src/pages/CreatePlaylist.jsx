@@ -25,9 +25,9 @@ export const CreatePlaylist = () => {
                     <input
                       type="text"
                       placeholder="Playlist Name"
-                      className="border-2 border-primaryColor bg-transparent h-12 w-auto p-3 text-primaryColor font-normal text-xl rounded-lg outline-none"
+                      className="border-2 border-primaryColor bg-transparent h-12 w-auto p-3 text-white font-normal text-xl rounded-lg outline-none"
                     />
-                    <div className="flex items-center gap-5">
+                    {/* <div className="flex items-center gap-5">
                       <h1 className="text-primaryColor font-bold">Add Playlist Image</h1>
                       <label htmlFor="fileInput" className="cursor-pointer">
                         <div className="border-2 border-primaryColor bg-primaryColor h-12 py-3 px-10 font-medium text-xl rounded-lg flex items-center text-black hover:text-white">
@@ -44,7 +44,7 @@ export const CreatePlaylist = () => {
                           />
                         </div>
                       </label>
-                    </div>
+                    </div> */}
                     <Link>
                       <div className="border-2 border-primaryColor bg-primaryColor h-12 py-3 px-10 font-medium text-xl rounded-lg flex items-center hover:text-white">
                         Create Playlist
@@ -56,8 +56,16 @@ export const CreatePlaylist = () => {
                   <h1 className="text-primaryColor pt-5 pb-1 font-bold">Description</h1>
                   <textarea
                     placeholder="Description"
-                    className="border-2 border-primaryColor bg-transparent h-full w-full p-3 text-primaryColor font-normal text-xl rounded-lg outline-none"
+                    className="border-2 border-primaryColor bg-transparent h-full w-full p-3 text-white font-normal text-xl rounded-lg outline-none"
                   />
+                </div>
+                <div>
+                <h1 className="text-primaryColor pt-5 pb-1 font-bold">Add Image</h1>
+                <input
+                      type="text"
+                      placeholder="Copy image address"
+                      className="border-2 border-primaryColor bg-transparent h-12 w-full p-3 text-white font-normal text-xl rounded-lg outline-none"
+                    />
                 </div>
               </div>
             </form>

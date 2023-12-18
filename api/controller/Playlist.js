@@ -5,21 +5,19 @@ dotenv.config();
 export const CreatePlaylist = async (req, res) => {
   const {
     playlist_name,
-    description,
     user_id,
     header_url,
   } = req.body;
 
   try {
     const newPlaylistQuery = `
-      INSERT INTO playlist (playlist_name, description, user_id, header_url)
-      VALUES ($1, $2, $3, $4)
+      INSERT INTO playlist (playlist_name, user_id, header_url)
+      VALUES ($1, $2, $3)
       RETURNING playlist_id;
     `;
 
     const playlistResult = await dbConnection.query(newPlaylistQuery, [
       playlist_name,
-      description,
       user_id,
       header_url,
     ]);
@@ -29,7 +27,7 @@ export const CreatePlaylist = async (req, res) => {
     res.status(201).json({ success: true, playlist_id });
   } catch (err) {
     console.log(err);
-    
+
     // Send an error response
     res.status(500).json({ success: false, error: "Internal Server Error" });
   }
