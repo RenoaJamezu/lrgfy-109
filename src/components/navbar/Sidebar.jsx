@@ -1,6 +1,14 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 export const Sidebar = () => {
+  const navigator = useNavigate();
+
+  const handleLogout = async (e) => {
+    e.preventDefault();
+    localStorage.clear();
+    navigator("/");
+  }
+
   return (
     <>
       <div className="fixed h-screen bg-tertiaryColor w-[300px]">
@@ -23,11 +31,12 @@ export const Sidebar = () => {
             </div>
           </Link>
           <div className="absolute left-24 bottom-0">
-            <Link to="/">
-              <div className="text-primaryColor font-medium text-2xl p-3">
-                Logout
-              </div>
-            </Link>
+            <button
+              onClick={handleLogout}
+              className="text-primaryColor font-medium text-2xl p-3"
+            >
+              Logout
+            </button>
           </div>
         </div>
       </div>

@@ -46,9 +46,8 @@ export const CreatePlaylist = async (req, res) => {
 
 // Retrieve user playlists
 export const UserPlaylist = async (req, res) => {
-  const  user_id  = req.params;
-  console.log(user_id.id);
-  console.log("Fetching all the playlist informations")
+  const user_id = req.params;
+
   try {
     const userPlaylist = await dbConnection.query(
       `SELECT * FROM playlist WHERE user_id = $1`,
@@ -63,7 +62,21 @@ export const UserPlaylist = async (req, res) => {
       allUserPlaylist,
       message: "This are all the user playlist"});
   } catch (error) {
+    console.log(error);
     return res.status(500).json({message: "Internal server error"})
-    console.log(error)
+  }
+}
+
+// Delete playlist
+export const DeletePlaylist = async (req, res) => {
+  const user_id = req.params;
+
+  try {
+
+    
+    return res.status(200).json({ message: "Course deleted successfully" });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: "Internal server error" });
   }
 }
