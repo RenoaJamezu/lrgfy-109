@@ -1,12 +1,51 @@
-import { Link } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { Header } from "../components/header/Header"
 import { Sidebar } from "../components/navbar/Sidebar"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { MdAddAPhoto } from "react-icons/md";
 
 export const CreatePlaylist = () => {
   const [playlist_name, setPlaylistName] = useState("");
-  const [description, setDescription] = useState("");
+  const [header_url, setHeaderUrl] = useState("");
+  const [user_id, setUserId] = useState("");  // New state to store user_id
+  const navigator = useNavigate();
+
+  useEffect(() => {
+    // Retrieve user_id from localStorage on component mount
+    const storedUserInfo = localStorage.getItem("userInfo");
+    const userInfo = JSON.parse(storedUserInfo);
+    if (userInfo && userInfo.user_id) {
+      setUserId(userInfo.user_id);
+    }
+  }, []);
+
+  const handleCreatePlaylist = async (e) => {
+    e.preventDefault();
+
+    if (playlist_name !== "" && header_url !== "" && user_id !== "") {
+      try {
+        let response = await fetch(buildURL("/create-playlist"), {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ 
+            playlist_name, header_url, user_id,
+          }),
+        });
+
+        if (response.ok) {
+          navigator("/library");
+        } else {
+          console.error("Error creating new playlist!");
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    } else {
+      console.error("Error: Input Fields cannot be empty");
+    }
+  };
 
   return (
     <>
@@ -24,6 +63,8 @@ export const CreatePlaylist = () => {
                   <div className="flex justify-between">
                     <input
                       type="text"
+                      value={playlist_name}
+                      onChange={(e) => setPlaylistName(e.target.value)}
                       placeholder="Playlist Name"
                       className="border-2 border-primaryColor bg-transparent h-12 w-auto p-3 text-white font-normal text-xl rounded-lg outline-none"
                     />
@@ -45,24 +86,27 @@ export const CreatePlaylist = () => {
                         </div>
                       </label>
                     </div> */}
-                    <Link>
-                      <div className="border-2 border-primaryColor bg-primaryColor h-12 py-3 px-10 font-medium text-xl rounded-lg flex items-center hover:text-white">
-                        Create Playlist
-                      </div>
-                    </Link>
+                    <button
+                      onClick={handleCreatePlaylist}
+                      className="border-2 border-primaryColor bg-primaryColor h-12 py-3 px-10 font-medium text-xl rounded-lg flex items-center hover:text-white"
+                    >
+                      Create
+                    </button>
                   </div>
                 </div>
-                <div>
+                {/* <div>
                   <h1 className="text-primaryColor pt-5 pb-1 font-bold">Description</h1>
                   <textarea
                     placeholder="Description"
                     className="border-2 border-primaryColor bg-transparent h-full w-full p-3 text-white font-normal text-xl rounded-lg outline-none"
                   />
-                </div>
+                </div> */}
                 <div>
                 <h1 className="text-primaryColor pt-5 pb-1 font-bold">Add Image</h1>
                 <input
                       type="text"
+                      value={header_url}
+                      onChange={(e) => setHeaderUrl(e.target.value)}
                       placeholder="Copy image address"
                       className="border-2 border-primaryColor bg-transparent h-12 w-full p-3 text-white font-normal text-xl rounded-lg outline-none"
                     />

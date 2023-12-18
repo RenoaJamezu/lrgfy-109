@@ -17,6 +17,8 @@ export const login = async (req, res) => {
     if (user.rows.length === 0) {
       return res.status(400).json({ message: "User does not exist" });
     }
+    const user_info = user.rows[0];
+    console.log(user_info);
 
     const hashed_password = user.rows[0].hashed_password;
     const isValidPassword = await bcrypt.compare(password, hashed_password);
@@ -25,8 +27,13 @@ export const login = async (req, res) => {
       return res.status(401).json({ message: "Wrong password" });
     }
 
-    // Return a success response
-    return res.status(201).json({ message: "Login successful" });
+    // return success
+    return res.status(200).json({
+      user_id: user_info.user_id,
+      username: user_info.username,
+      email: user_info.email,
+      message: "Login successful",
+    });
   } catch (error) {
     console.error(error);
     return res.status(500).json({ message: "Internal server error" });

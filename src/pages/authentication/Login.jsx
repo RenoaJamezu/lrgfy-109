@@ -24,11 +24,15 @@ export const Login = () => {
           })
         });
         console.log(response.status)
-        if (response.status === 201) {
-          console.log("Correct password")
-          nav("/library")
-        } else if (response.status === 401){
-          console.log("Incorrect Password")
+        if (response.status === 200) {
+          const userInfo = await response.json();
+
+          // Store user information in localStorage
+          localStorage.setItem("userInfo", JSON.stringify(userInfo));
+
+          nav("/library");
+        } else if (response.status === 401) {
+          console.log("Incorrect Password");
         }
       } catch (error) {
         console.log(error);
