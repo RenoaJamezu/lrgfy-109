@@ -72,9 +72,21 @@ export const DeletePlaylist = async (req, res) => {
   const user_id = req.params;
 
   try {
+    // Check if the playlist with the provided playlist_id exists for the user
+    const playlistExists = await dbConnection.query(
+      "SELECT * FROM playlist WHERE user_id = $1 AND playlist_id = $2",
+      [user_id.id, playlist_id]
+    );
 
-    
-    return res.status(200).json({ message: "Course deleted successfully" });
+    if (playlistExists.rows.length === 0) {
+      return res.status(404).json({ message: "Playlist not found" });
+    }
+
+    // If the playlist exists, proceed with deleting it
+    const deletePlaylistQuery = "DELETE FROM playlist WHERE playlist_id = $1";
+    await dbConnection.query(deletePlaylistQuery, [playlist_id]);
+
+    return res.status(200).json({ message: "Playlist deleted successfully" });
   } catch (error) {
     console.log(error);
     return res.status(500).json({ message: "Internal server error" });

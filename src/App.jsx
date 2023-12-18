@@ -5,7 +5,7 @@ import { Login } from "./pages/authentication/Login";
 import { Signup } from "./pages/authentication/Signup";
 import { Library } from "./pages/dashboard/Library";
 import { AllSongs } from "./pages/dashboard/AllSongs";
-import { Playlist } from "./pages/Playlist";
+import { MyPlaylist } from "./pages/MyPlaylist";
 import { CreatePlaylist } from "./pages/CreatePlaylist";
 import { AddSong } from "./pages/AddSong";
 import { AddSongPlaylist } from "./pages/AddSongPlaylist";
@@ -23,7 +23,7 @@ function App() {
           <Route path="/signup" element={<Signup />}/>
           <Route path="/library" element={<Library />}/>
           <Route path="/all-songs" element={<AllSongs />}/>
-          <Route path="/playlist" element={<Playlist />}/>
+          <Route path="/playlist/:id" element={<MyPlaylist />}/>
           <Route path="/create-playlist" element={<CreatePlaylist />}/>
           <Route path="/add-song" element={<AddSong />}/>
           <Route path="/add-song-playlist" element={<AddSongPlaylist />}/>

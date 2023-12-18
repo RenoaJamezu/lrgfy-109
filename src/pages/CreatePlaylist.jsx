@@ -79,12 +79,14 @@ export const CreatePlaylist = () => {
                         </div>
                       </label>
                     </div> */}
-                    <button
-                      onClick={handleCreatePlaylist}
-                      className="border-2 border-primaryColor bg-primaryColor h-12 py-3 px-10 font-medium text-xl rounded-lg flex items-center hover:text-white"
-                    >
-                      Create
-                    </button>
+                    <div className="fixed top-7 right-10">
+                      <button
+                        onClick={handleCreatePlaylist}
+                        className="border-2 border-primaryColor bg-primaryColor h-12 py-3 px-10 font-medium text-xl rounded-lg flex items-center hover:text-white "
+                      >
+                        Create
+                      </button>
+                    </div>
                   </div>
                 </div>
                 {/* <div>

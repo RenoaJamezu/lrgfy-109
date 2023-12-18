@@ -4,10 +4,9 @@ import { buildUrl } from "../utils/buildUrl"
 
 
 export const PlaylistCard = () => {
-  const [playlistInfo, setPlaylistInfo] = useState([]);
+  const [playlist, setPlaylist] = useState([]);
   const user_id = localStorage.getItem("user_id");
 
-  const [playlist, setPlaylist] = useState([])
 
   const getPlaylistInfo = async () => {
    console.log('Frontend handling get playlist informations')
@@ -28,12 +27,15 @@ export const PlaylistCard = () => {
   useEffect(()=>{
     getPlaylistInfo()
   },[])
+
   return (
     <>
       <div className="flex flex-col gap-5">
         {playlist.map((playlist, index) => (
           <div key={index} >
-            <Link to="/playlist">
+            <Link 
+              key={playlist.playlist_id}
+              to={`/playlist/${playlist?.playlist_id}`}>
               <div className="flex items-center">
                 <img
                   src={playlist?.header_url}
