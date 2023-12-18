@@ -26,11 +26,12 @@ export const Login = () => {
         console.log(response.status)
         if (response.status === 200) {
           const userInfo = await response.json();
-
-          // Store user information in localStorage
-          localStorage.setItem("userInfo", JSON.stringify(userInfo));
-
-          nav("/library");
+          localStorage.setItem("user_id", userInfo?.user_info?.user_id)
+          localStorage.setItem("username", userInfo?.user_info?.username)
+          localStorage.setItem("email", userInfo?.user_info?.email)
+          setTimeout(() => {
+            nav("/library");
+          }, 3000);
         } else if (response.status === 401) {
           console.log("Incorrect Password");
         }

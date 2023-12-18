@@ -1,30 +1,23 @@
 import { useNavigate } from "react-router-dom"
 import { Header } from "../components/header/Header"
 import { Sidebar } from "../components/navbar/Sidebar"
-import { useEffect, useState } from "react"
+import { useState } from "react"
+import { buildUrl } from "../utils/buildUrl"
 import { MdAddAPhoto } from "react-icons/md";
 
 export const CreatePlaylist = () => {
   const [playlist_name, setPlaylistName] = useState("");
   const [header_url, setHeaderUrl] = useState("");
-  const [user_id, setUserId] = useState("");  // New state to store user_id
+  const user_id = localStorage.getItem("user_id");
   const navigator = useNavigate();
 
-  useEffect(() => {
-    // Retrieve user_id from localStorage on component mount
-    const storedUserInfo = localStorage.getItem("userInfo");
-    const userInfo = JSON.parse(storedUserInfo);
-    if (userInfo && userInfo.user_id) {
-      setUserId(userInfo.user_id);
-    }
-  }, []);
 
   const handleCreatePlaylist = async (e) => {
     e.preventDefault();
 
     if (playlist_name !== "" && header_url !== "" && user_id !== "") {
       try {
-        let response = await fetch(buildURL("/create-playlist"), {
+        let response = await fetch(buildUrl("/music/create-playlist"), {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

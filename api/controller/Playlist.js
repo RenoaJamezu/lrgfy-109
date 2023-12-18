@@ -1,4 +1,3 @@
-// Import necessary dependencies and configurations
 import { dbConnection } from "../database/database.js";
 import dotenv from "dotenv";
 dotenv.config();
@@ -44,3 +43,27 @@ export const CreatePlaylist = async (req, res) => {
     res.status(500).json({ success: false, error: "Internal Server Error" });
   }
 };
+
+// Retrieve user playlists
+export const UserPlaylist = async (req, res) => {
+  const  user_id  = req.params;
+  console.log(user_id.id);
+  console.log("Fetching all the playlist informations")
+  try {
+    const userPlaylist = await dbConnection.query(
+      `SELECT * FROM playlist WHERE user_id = $1`,
+      [user_id.id],
+    )
+    
+    const allUserPlaylist = userPlaylist.rows;
+
+    console.log(allUserPlaylist)
+
+    return res.status(200).json({
+      allUserPlaylist,
+      message: "This are all the user playlist"});
+  } catch (error) {
+    return res.status(500).json({message: "Internal server error"})
+    console.log(error)
+  }
+}
