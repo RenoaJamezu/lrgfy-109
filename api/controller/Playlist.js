@@ -119,3 +119,27 @@ export const SelectPlaylist = async (req, res) => {
     console.log(error);
   }
 }
+
+// Add song
+export const AddSong = async (req, res) => {
+  const { songName, artist, song, user_id } = req.body;
+
+  try {
+    const insertSong = await dbConnection.query(
+      `INSERT INTO songs (song_name, song_artist, song_mp3, user_id) VALUES ($1, $2, $3, $4) RETURNING *`,
+      [songName, artist, song, user_id]
+    );
+
+    const newSong = insertSong.rows[0];
+
+    return res.status(201).json({
+      newSong,
+      message: "Song added successfully",
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      message: "Internal Server Error",
+    });
+  }
+};

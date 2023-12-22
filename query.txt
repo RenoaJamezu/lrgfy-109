@@ -16,8 +16,8 @@ CREATE TABLE songs (
   song_id SERIAL PRIMARY KEY,
   song_name VARCHAR(255) NOT NULL,
   song_artist VARCHAR(255) NOT NULL,
-  song_mp3 VARCHAR(255) NOT NULL
-  user_id INT REFERENCES users(user_id),
+  song_mp3 VARCHAR(255) NOT NULL,
+  user_id INT REFERENCES users(user_id)
 );
 
 CREATE TABLE playlist (

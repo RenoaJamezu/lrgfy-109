@@ -3,13 +3,8 @@ import { Header } from "../components/header/Header"
 import { Sidebar } from "../components/navbar/Sidebar"
 import { useState } from "react"
 import { buildUrl } from "../utils/buildUrl"
-import { MdAddAPhoto } from "react-icons/md";
 
 export const CreatePlaylist = () => {
-  const [playlist_name, setPlaylistName] = useState("");
-  const [header_url, setHeaderUrl] = useState("");
-  const user_id = localStorage.getItem("user_id");
-  const navigator = useNavigate();
 
 
   const handleCreatePlaylist = async (e) => {

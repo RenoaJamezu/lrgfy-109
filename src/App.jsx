@@ -9,6 +9,7 @@ import { MyPlaylist } from "./pages/MyPlaylist";
 import { CreatePlaylist } from "./pages/CreatePlaylist";
 import { AddSong } from "./pages/AddSong";
 import { AddSongPlaylist } from "./pages/AddSongPlaylist";
+import { Protected } from "./utils/Protected";
 
 
 
@@ -18,15 +19,17 @@ function App() {
     <>
       <Routers>
         <Routes>
-          <Route path="/" element={<Mainpage />}/>
-          <Route path="/login" element={<Login />}/>
-          <Route path="/signup" element={<Signup />}/>
-          <Route path="/library" element={<Library />}/>
-          <Route path="/all-songs" element={<AllSongs />}/>
-          <Route path="/playlist/:id" element={<MyPlaylist />}/>
-          <Route path="/create-playlist" element={<CreatePlaylist />}/>
-          <Route path="/add-song" element={<AddSong />}/>
-          <Route path="/add-song-playlist" element={<AddSongPlaylist />}/>
+          <Route path="/" element={<Mainpage />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route element={<Protected />}>
+            <Route path="/library" element={<Library />} />
+            <Route path="/all-songs" element={<AllSongs />} />
+            <Route path="/playlist/:id" element={<MyPlaylist />} />
+            <Route path="/create-playlist" element={<CreatePlaylist />} />
+            <Route path="/add-song" element={<AddSong />} />
+            <Route path="/add-song-playlist" element={<AddSongPlaylist />} />
+          </Route>
         </Routes>
       </Routers>
     </>
