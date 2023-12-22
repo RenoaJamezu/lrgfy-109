@@ -94,3 +94,28 @@ export const DeletePlaylist = async (req, res) => {
     return res.status(500).json({ message: "Internal server error" });
   }
 };
+
+// Select playlist
+export const SelectPlaylist = async (req, res) => {
+  console.log("Handling Selecting Playlist Req");
+  const playlist_id = req.params;
+  console.log(playlist_id);
+
+  try {
+    const selectPlaylist = await dbConnection.query(
+      `SELECT * FROM playlist WHERE playlist_id = $1`,
+      [playlist_id]
+    );
+
+    const selectedPlaylist = selectPlaylist.rows;
+
+    console.log(selectPlaylist);
+
+    return res.status(200).json({
+      selectPlaylist,
+      message: "These is the selected playlist"
+    });
+  } catch (error) {
+    console.log(error);
+  }
+}
