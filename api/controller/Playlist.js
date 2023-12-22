@@ -70,7 +70,9 @@ export const UserPlaylist = async (req, res) => {
 
 // Delete playlist
 export const DeletePlaylist = async (req, res) => {
-  const { playlist_id } = req.params;
+  console.log("Handling Delete Req");
+  const playlist_id = req.params;
+  console.log(playlist_id);
 
   try {
     const deletePlaylistQuery = `
@@ -79,7 +81,7 @@ export const DeletePlaylist = async (req, res) => {
       RETURNING *;
     `;
 
-    const deletedPlaylist = await dbConnection.query(deletePlaylistQuery, [playlist_id]);
+    const deletedPlaylist = await dbConnection.query(deletePlaylistQuery, [playlist_id.id]);
 
     if (deletedPlaylist.rows.length === 0) {
       console.log(`Playlist with ID ${playlist_id} not found.`);

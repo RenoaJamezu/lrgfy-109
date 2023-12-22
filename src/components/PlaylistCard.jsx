@@ -16,8 +16,7 @@ export const PlaylistCard = ({ playlist = [] }) => {
 
       if (response.ok) {
         console.log('Playlist deleted successfully');
-        // Optionally, you can also close the modal here if it's open.
-        // Implement the modal closing logic based on your modal implementation.
+        window.location.reload();
       } else {
         console.log('Failed to delete playlist. Response:', response);
       }

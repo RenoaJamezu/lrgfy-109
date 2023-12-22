@@ -33,26 +33,6 @@ export const MyPlaylist = () => {
     getPlaylistInfo();
   }, []);
 
-  const handleDeletePlaylist = async (playlist_id) => {
-    try {
-      let response = await fetch(buildUrl(`/music/delete-playlist/${playlist_id}`), {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-
-      if (response.ok) {
-        console.log('Playlist deleted successfully');
-        nav("/library");
-      } else {
-        console.log('Failed to delete playlist. Response:', response);
-      }
-    } catch (error) {
-      console.log('Error deleting playlist:', error);
-    }
-  };
-
   return (
     <>
       <div>
