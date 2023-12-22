@@ -20,22 +20,30 @@ export const AddSong = () => {
           <div className="bg-secondaryColor gap-5 px-10 pt-28 h-full">
             <form>
               <div className="flex flex-col">
-                <div>
-                  <h1 className="text-primaryColor pt-5 pb-1 font-bold">Playlist Name</h1>
-                  <div className="flex justify-between">
+                <div className="flex gap-5">
+                  <div>
+                    <h1 className="text-primaryColor pt-5 pb-1 font-bold">Song Name</h1>
                     <input
                       type="text"
-                      placeholder="Playlist Name"
+                      placeholder="Song Name"
                       className="border-2 border-primaryColor bg-transparent h-12 w-auto p-3 text-primaryColor font-normal text-xl rounded-lg outline-none"
                     />
-                    <div className="fixed top-7 right-10">
-                      <button
-                        onClick={handleAddSong}
-                        className="border-2 border-primaryColor bg-primaryColor h-12 py-3 px-10 font-medium text-xl rounded-lg flex items-center hover:text-white "
-                      >
-                        Add
-                      </button>
-                    </div>
+                  </div>
+                  <div>
+                    <h1 className="text-primaryColor pt-5 pb-1 font-bold">Artist Name</h1>
+                    <input
+                      type="text"
+                      placeholder="Artist Name"
+                      className="border-2 border-primaryColor bg-transparent h-12 w-auto p-3 text-primaryColor font-normal text-xl rounded-lg outline-none"
+                    />
+                  </div>
+                  <div className="fixed top-7 right-10">
+                    <button
+                      onClick={handleAddSong}
+                      className="border-2 border-primaryColor bg-primaryColor h-12 py-3 px-10 font-medium text-xl rounded-lg flex items-center hover:text-white "
+                    >
+                      Add
+                    </button>
                   </div>
                 </div>
                 {/* <div>

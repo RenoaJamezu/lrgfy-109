@@ -46,47 +46,47 @@ export const CreatePlaylist = async (req, res) => {
 
 // Retrieve user playlists
 export const UserPlaylist = async (req, res) => {
-  const user_id = req.params;
+  const user_id = req.params.id; // Extract user ID from req.params
 
   try {
     const userPlaylist = await dbConnection.query(
       `SELECT * FROM playlist WHERE user_id = $1`,
-      [user_id.id],
-    )
+      [user_id]
+    );
     
     const allUserPlaylist = userPlaylist.rows;
 
-    console.log(allUserPlaylist)
+    console.log(allUserPlaylist);
 
     return res.status(200).json({
       allUserPlaylist,
-      message: "This are all the user playlist"});
+      message: "These are all the user playlists"
+    });
   } catch (error) {
     console.log(error);
-    return res.status(500).json({message: "Internal server error"})
+    return res.status(500).json({ message: "Internal server error" });
   }
-}
+};
 
 // Delete playlist
 export const DeletePlaylist = async (req, res) => {
   const { playlist_id } = req.params;
 
   try {
-    // Check if the playlist with the provided playlist_id exists
-    const playlistExists = await dbConnection.query(
-      "SELECT * FROM playlist WHERE playlist_id = $1",
-      [playlist_id]
-    );
+    const deletePlaylistQuery = `
+      DELETE FROM playlist
+      WHERE playlist_id = $1
+      RETURNING *;
+    `;
 
-    if (playlistExists.rows.length === 0) {
+    const deletedPlaylist = await dbConnection.query(deletePlaylistQuery, [playlist_id]);
+
+    if (deletedPlaylist.rows.length === 0) {
+      console.log(`Playlist with ID ${playlist_id} not found.`);
       return res.status(404).json({ message: "Playlist not found" });
     }
 
-    // If the playlist exists, proceed with deleting it
-    const deletePlaylistQuery = "DELETE FROM playlist WHERE playlist_id = $1";
-    await dbConnection.query(deletePlaylistQuery, [playlist_id]);
-
-    return res.status(200).json({ message: "Playlist deleted successfully" });
+    return res.status(200).json({ message: "Playlist deleted successfully", deletedPlaylist: deletedPlaylist.rows[0] });
   } catch (error) {
     console.log(error);
     return res.status(500).json({ message: "Internal server error" });
