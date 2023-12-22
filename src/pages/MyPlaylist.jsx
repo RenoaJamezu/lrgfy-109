@@ -30,6 +30,7 @@ export const MyPlaylist = () => {
         if (response.ok) {
           const data = await response.json();
           console.log("Song added successfully:", data);
+          window.location.reload();
         } else {
           console.error("Error adding song!");
         }

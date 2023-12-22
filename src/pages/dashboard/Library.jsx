@@ -48,7 +48,7 @@ export const Library = () => {
         });
 
         if (response.ok) {
-          navigator("/library");
+          window.location.reload();
         } else {
           console.error("Error creating new playlist!");
         }
